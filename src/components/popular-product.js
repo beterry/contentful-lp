@@ -1,11 +1,12 @@
 import React from 'react'
+import Img from 'gatsby-image'
 
 import styles from './popular-product.module.css'
 
-export default ({name, copy, image}) => (
+export default ({name, description, image}) => (
     <li className={styles.popular}>
-        <img src={image} alt={name} />
+        <Img fluid={image} alt={name} />
         <h3>{name}</h3>
-        <p>{copy}</p>
+        <p>{description}</p>
     </li>
 )
