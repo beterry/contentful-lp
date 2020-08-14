@@ -10,7 +10,10 @@ import PopularProduct from '../components/popular-product'
 
 export default function Home({data}) {
 
+    //map nodes from query data to a new array
     const products = data.allContentfulProduct.edges.map(edge => edge.node)
+
+    //deconstruct heading and subheading from query data
     const {heroHeading, heroSubtext} = data.allContentfulWebsitePage.edges[0].node
 
     return (
@@ -24,22 +27,23 @@ export default function Home({data}) {
                 copy={heroSubtext}
             />
             <div className='container'>
-            <h2 className='center-text mb-2'>Popular Products</h2>
-            <ul className='popular-products mb-6'>
-                {products.map((product, index) =>
-                    <PopularProduct
-                        name={product.name}
-                        description={product.description.description}
-                        image={product.image.fluid}
-                        key={index}
-                    />
-                )}
-            </ul>
+                <h2 className='center-text mb-2'>Popular Products</h2>
+                <ul className='popular-products mb-6'>
+                    {products.map((product, index) =>
+                        <PopularProduct
+                            name={product.name}
+                            description={product.description.description}
+                            image={product.image.fluid}
+                            key={index}
+                        />
+                    )}
+                </ul>
             </div>
         </Layout>
     )
 }
 
+//I used GraphiQL to understand what I was getting back 
 export const pageQuery = graphql`
     query MyQuery {
         allContentfulWebsitePage(filter: {contentful_id: {eq: "15SRsvCklUtt2swIXM8D6K"}}) {
