@@ -1,4 +1,5 @@
 import React from "react"
+import {Helmet} from 'react-helmet'
 
 import '../styles/base.css'
 
@@ -32,6 +33,10 @@ export default function Home() {
 
     return (
         <Layout>
+            <Helmet>
+                <title>Chester Running Co</title>
+                <meta name='description' content='A simple landing page built with GatsbyJS and Contentful' />
+            </Helmet>
             <Hero 
                 heading='Gear for all paces'
                 copy='Stop in today to experience our expertise shoe fitting and outstanding selection of technical running gear.'
