@@ -1,0 +1,55 @@
+.navigation{
+    background: #1965A8;
+    color: white;
+}
+
+.logo{
+    width: 200px;
+}
+
+.innerFlex{
+    min-height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.innerFlex ul{
+    display: flex;
+    align-items: center;
+}
+
+.navLink{
+    margin: 0 1rem;
+    cursor: pointer;
+    font-size: .8725rem;
+}
+
+.navLink:hover{
+    text-decoration: underline;
+}
+
+
+.navIcon{
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: .5rem;
+}
+
+.navIcon:hover{
+    background: #1D5B96;
+}
+
+@media screen and (max-width: 45rem) {
+    .navLink{
+        display: none;
+    }
+}
