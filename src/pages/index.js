@@ -1,5 +1,6 @@
 import React from "react"
 import {Helmet} from 'react-helmet'
+import {graphql} from 'gatsby'
 
 import '../styles/base.css'
 
@@ -11,25 +12,27 @@ import product1 from '../images/product-1.png'
 import product2 from '../images/product-2.png'
 import product3 from '../images/product-3.png'
 
-export default function Home() {
-    const products = [
-        {
-            name: 'Garmin Forerunner 245',
-            copy: 'This GPS smartwatch tracks your stats, crunches the numbers and gets to know all about your performance, your running form, your training and even your goals.',
-            image: product1
-        },
-        {
-            name: 'Nike TrailBlazer',
-            copy: 'TrailBlazer technology brings lightweight, bouncy cushioning to every stride, and mesh helps keep you cool.',
-            image: product2
-        },
-        {
-            name: 'Adidas Running Shirt',
-            copy: 'With this running shirt for men sweat has no chance even during intensive workouts. It’s made of lightweight, soft Climalite fabric that wicks sweat away from the skin for a comfortable, dry feel at any distance.',
-            image: product3
-        },
-    ]
+export default function Home({data}) {
+    // const products = [
+    //     {
+    //         name: 'Garmin Forerunner 245',
+    //         copy: 'This GPS smartwatch tracks your stats, crunches the numbers and gets to know all about your performance, your running form, your training and even your goals.',
+    //         image: product1
+    //     },
+    //     {
+    //         name: 'Nike TrailBlazer',
+    //         copy: 'TrailBlazer technology brings lightweight, bouncy cushioning to every stride, and mesh helps keep you cool.',
+    //         image: product2
+    //     },
+    //     {
+    //         name: 'Adidas Running Shirt',
+    //         copy: 'With this running shirt for men sweat has no chance even during intensive workouts. It’s made of lightweight, soft Climalite fabric that wicks sweat away from the skin for a comfortable, dry feel at any distance.',
+    //         image: product3
+    //     },
+    // ]
 
+    const products = data.allContentfulProduct.edges.map(edge => edge.node)
+    console.log(products)
 
     return (
         <Layout>
@@ -57,3 +60,31 @@ export default function Home() {
         </Layout>
     )
 }
+
+export const pageQuery = graphql`
+    query MyQuery {
+        allContentfulWebsitePage(filter: {contentful_id: {eq: "15SRsvCklUtt2swIXM8D6K"}}) {
+            edges {
+                node {
+                    heroHeading
+                    heroSubtext
+                }
+            }
+        }
+        allContentfulProduct {
+            edges {
+                node {
+                    name
+                    description {
+                        description
+                    }
+                    image {
+                        fluid {
+                            ...GatsbyContentfulFluid
+                        }
+                    }
+                }
+            }
+        }
+    }
+`

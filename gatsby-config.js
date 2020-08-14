@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
+require('dotenv').config()
+
 module.exports = {
   /* Your site config here */
   plugins: [
@@ -29,5 +31,14 @@ module.exports = {
         }
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+        resolve: `gatsby-source-contentful`,
+        options: {
+          spaceId: `ebc08t0fv91z`,
+          accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        },
+    },
   ],
 }
