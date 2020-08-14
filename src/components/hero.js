@@ -12,7 +12,7 @@ export default ({heading, copy}) => (
           <div className={styles.content}>
               <h1>{heading}</h1>
               <p>{copy}</p>
-              <a href=''><MdPhone size='1.5rem' />Call Us</a>
+              <a href='tel:000000000'><MdPhone size='1.5rem' />Call Us</a>
           </div>
           <div className={styles.runners}>
             <img src={runner} alt='Runners' />
